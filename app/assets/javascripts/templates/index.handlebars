@@ -1,0 +1,9 @@
+<h1>Welcome to The Flint & Flame!</h1>
+<p>{{#link-to 'products'}}<button type="button" class="btn btn-primary">There are {{productsCount}} products</button>{{/link-to}}</p>
+<img width="100px" {{bind-attr src='logo'}} alt='Logo' />
+<p>Rendered on {{time}}</p>
+<br>
+<hr>
+{{#each onSale}}
+    {{product-details product=this class='col-sm-4'}}
+{{/each}}

@@ -1,0 +1,16 @@
+<h3>Reviews</h3>
+<ul>
+    {{#each comment_ids }}
+        {{#view 'App.CommentView' tag='li' length=body.length}}
+            <div class='content comment'>{{body}}</div>
+            <span class='expand text-success'>
+             Read {{#if view.isExpanded}}Less{{else}}More{{/if}}
+             </span>
+        {{/view}}
+    {{else}}
+        <li><p class='text-muted'>
+            <em>No reviews yet. Be the first to write one!</em>
+        </p></li>
+    {{/each}}
+</ul>
+<div class="clearfix"></div>

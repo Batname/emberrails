@@ -1,0 +1,25 @@
+
+    <div class='col-md-7'>
+        <h2>{{title}}</h2><span class="sale-label"></span>
+
+        <h3 class='text-success'>${{price}}</h3>
+
+        <p class='text-muted'>{{description}}</p>
+
+        {{partial 'comment_ids'}}
+        <!--{render 'comments' comments}-->
+    {{#if isNotCommented}}
+        <div class='new-comment'>
+            <h3>comment {{title}}</h3>
+            {{#if comment.text}}
+                <p class='text-muted'>{{comment.text}}</p>
+            {{/if}}
+            {{textarea valueBinding='comment.text'}}
+            <br>
+            <button {{action 'createComment'}} class='btn-primary'>Comment</button>
+        </div>
+    {{/if}}
+    </div>
+    <div class='col-md-5'>
+        <img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
+    </div>

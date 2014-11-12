@@ -1,0 +1,49 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @product.title
+%p
+  %b Price:
+  = @product.price
+%p
+  %b Description:
+  = @product.description
+%p
+  %b Image:
+  = @product.image
+
+%hr
+
+%p All comment
+
+%table{:class => "table"}
+  %tr
+    %th Commenter
+    %th Comment
+
+  - @product.comments.each do |comment|
+    %tr
+      %td= comment.commenter
+      %td= comment.body
+      %td= link_to 'Destroy', product_comment_path(@product, comment), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%hr
+
+%p
+  %b Add a comment:
+
+  = form_for ([@product, @product.comments.build]) do |f|
+    .field
+      = f.label :commenter
+      = f.text_field :commenter
+    .field
+      = f.label :body
+      = f.text_area :body
+    .actions
+      = f.submit 'Save'
+
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

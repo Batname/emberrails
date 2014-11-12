@@ -1,0 +1,11 @@
+<h3>Reviews</h3>
+<ul>
+    {{sortProperties}}
+    {{#each comment_ids }}
+        <li>{{body}}</li>
+    {{else}}
+        <li><p class='text-muted'>
+            <em>No reviews yet. Be the first to write one!</em>
+        </p></li>
+    {{/each}}
+</ul>

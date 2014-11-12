@@ -1,0 +1,20 @@
+<div>
+            <span class="label label-warning">
+                {{#link-to 'products.onsale'}}On Sale{{/link-to}}
+            </span>
+    <img {{bind-attr src='product.image'}} class='img-thumbnail col-sm-5'/>
+
+    <div class='col-sm-7'>
+        <h2>{{product.title}}</h2>
+
+        <p class="product-description">{{product.description}}</p>
+
+        <p>{{#link-to 'product' product class="btn btn-success"}}
+            Buy for ${{product.price}}{{/link-to}}</p>
+        {{#if hasComments}}
+            <p class='text-muted'>Read all comments ({{commentsCount}}).</p>
+        {{/if}}
+    </div>
+
+
+</div>

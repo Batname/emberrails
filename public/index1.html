@@ -1,0 +1,87 @@
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="handlebars-v1.3.0.js"></script>
+    <script src="ember-1.8.1.js"></script>
+    <script src="ember-data.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script type='text/x-handlebars' data-template-name='application'>
+ <nav class="navbar navbar-inverse" role="navigation">
+ <div class="container-fluid container">
+ <div class="navbar-header">
+  {{#link-to 'index' class='navbar-brand' }}Homepage{{/link-to}}
+ </div>
+ <ul class="nav navbar-nav navbar-right">
+ <li>{{#link-to 'index'}}Homepage{{/link-to}}</li>
+ <li>{{#link-to 'about'}}About{{/link-to}}</li>
+ <li>{{#link-to 'shops'}}shops{{/link-to}}</li>
+  </ul>
+  </div>
+ </nav>
+<div class='container'>{{outlet}}</div>
+ <div class="footer">
+      <div class="container">
+        <p class="text-muted">footer content here.</p>
+      </div>
+    </div>
+
+
+</script>
+
+<script type='text/x-handlebars' data-template-name='index'>
+ <h1>Welcome to The Flint & Flame!</h1>
+ <p>There are {{shopsCount}} shops</p>
+ <img width="100px" {{bind-attr src='logo'}} alt='Logo' />
+ <p>Rendered on {{time}}</p>
+
+
+</script>
+
+<script type='text/x-handlebars' data-template-name='about'>
+ <h1>About The Fire Spirits</h1>
+
+</script>
+
+<script type='text/x-handlebars' data-template-name='shops'>
+<div class='row'>
+<div class='col-sm-3'>
+<div class='list-group'>
+{{#each}}
+{{#link-to 'shop' this classNames='list-group-item'}}
+{{title}}
+{{/link-to}}
+{{/each}}
+</div>
+</div>
+<div class='col-sm-9'>
+{{outlet}}
+</div>
+</div>
+</script>
+
+<script type='text/x-handlebars' data-template-name='shops/index'>
+<p class='text-muted'>Choose a shop from those on the left!</p>
+</script>
+
+<script type='text/x-handlebars' data-template-name='shop'>
+<div class='row'>
+<div class='col-md-7'>
+<h2>{{title}}</h2>
+<h3 class='text-success'>${{price}}</h3>
+<p class='text-muted'>{{description}}</p>
+</div>
+<div class='col-md-5'>
+<img {{bind-attr src='image'}} class='img-thumbnail img-rounded'/>
+</div>
+</div>
+
+</script>
+
+
+</body>
+</html>

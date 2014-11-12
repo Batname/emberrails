@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Journal</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <% if current_page?(root_url) %>
+      <%= javascript_include_tag "application" %>
+  <% else %>
+      <%= javascript_include_tag "backendapplication" %>
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+<% if current_page?(root_url) %>
+    <body>
+    <%= yield %>
+    </body>
+<% else %>
+    <body class="container">
+    <%= yield %>
+    </body>
+<% end %>
+
+</html>
